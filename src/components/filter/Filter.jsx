@@ -4,11 +4,13 @@ import css from './Filter.module.css';
 import { useDispatch } from 'react-redux';
 import { setFilter } from '../../redux/filterSlise';
 
+
 const FilterSchema = yup.object().shape({
   filter: yup.string().required(),
 });
 
 const Filter = () => {
+
   const dispatch = useDispatch();
 
   const handleChangeFilter = evt => {
@@ -16,6 +18,7 @@ const Filter = () => {
   };
 
   return (
+    
     <>
       <Formik initialValues={{ filter: '' }} validationSchema={FilterSchema}>
         {({ values, handleChange }) => (

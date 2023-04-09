@@ -6,15 +6,17 @@ import Contact from 'components/contact/Contact';
 const ContactList = () => {
   const filters = useSelector(getFilter);
   const contacts = useSelector(getContacts);
+  console.log(contacts);
+
   let visibleContacts;
 
-  if (filters !== '') {
+  if ((filters !== '') & (contacts.data.length > 0)) {
     visibleContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filters.toLowerCase())
     );
   }
-  if (filters === '') {
-    visibleContacts = contacts;
+  if ((filters === '') & (contacts.data.length > 0)) {
+    visibleContacts = contacts.data;
   }
 
   return (

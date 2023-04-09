@@ -7,16 +7,18 @@ import { getContacts } from 'redux/selectors';
 
 const ContactForm = () => {
   const contacts = useSelector(getContacts);
+
   const dispatch = useDispatch();
 
   const handleSubmit = values => {
     const { name, number } = values;
     if (
-      contacts.some(
+      (contacts.data.length > 0) &
+      contacts.data.some(
         contact => contact.name.toLowerCase() === name.toLowerCase()
       )
     ) {
-      alert(`${name} is already in contacts!`);
+      return alert(`${name} is already in contacts!`);
     } else {
       dispatch(addContact(name, number));
     }
