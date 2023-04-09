@@ -7,18 +7,14 @@ const ContactList = () => {
   const filters = useSelector(getFilter);
   const contacts = useSelector(getContacts);
 
-
   let visibleContacts;
 
   if (contacts.data.length > 0) {
-    if (filters !== '') {
-      visibleContacts = contacts.filter(contact =>
-        contact.name.toLowerCase().includes(filters.toLowerCase())
-      );
-    }
-    if (filters === '') {
-      visibleContacts = contacts.data;
-    }
+    filters !== ''
+      ? (visibleContacts = contacts.filter(contact =>
+          contact.name.toLowerCase().includes(filters.toLowerCase())
+        ))
+      : (visibleContacts = contacts.data);
   }
 
   return (
