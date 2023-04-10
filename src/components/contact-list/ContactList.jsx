@@ -11,7 +11,7 @@ const ContactList = () => {
 
   if (contacts.data.length > 0) {
     filters !== ''
-      ? (visibleContacts = contacts.filter(contact =>
+      ? (visibleContacts = contacts.data.filter(contact =>
           contact.name.toLowerCase().includes(filters.toLowerCase())
         ))
       : (visibleContacts = contacts.data);
